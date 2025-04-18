@@ -1,0 +1,28 @@
+/* Styles specific to the widget when embedded as an iframe */
+
+.widget-container {
+  /* Remove any margin/padding to fit iframe dimensions precisely */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  /* Use the widget background color */
+  background-color: #dcb482;
+}
+
+/* Override any global styles that might affect the widget */
+body.widget-page {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* Ensure the widget fills the available space */
+.widget-container .max-w-7xl {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  border-radius: 0;
+  height: 100%;
+}
