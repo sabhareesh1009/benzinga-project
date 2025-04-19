@@ -97,7 +97,7 @@
     
     <iframe 
       id="earningsWidget" 
-      src="http://localhost:3000/widget?title=Earnings%20Calendar&daysToShow=5&quarter=Q1" 
+      src="https://benzinga-earnings-widget.windsurf.build/widget?title=Earnings%20Calendar&daysToShow=5&quarter=Q1" 
       title="Benzinga Earnings Widget"
       style="border: 0;"
     ></iframe>
@@ -111,7 +111,7 @@
       
       // Update iframe src with new parameters
       const iframe = document.getElementById('earningsWidget');
-      iframe.src = `http://localhost:3000/widget?title=${encodeURIComponent(title)}&daysToShow=${daysToShow}&quarter=${quarter}`;
+      iframe.src = `https://benzinga-earnings-widget.windsurf.build/widget?title=${encodeURIComponent(title)}&daysToShow=${daysToShow}&quarter=${quarter}`;
     });
   </script>
 </body>
