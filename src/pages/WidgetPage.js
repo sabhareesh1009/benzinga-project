@@ -14,6 +14,7 @@ const WidgetPage = () => {
   const title = params.get('title') || WIDGET_TITLE;
   const logo = params.get('logo') || WIDGET_LOGO;
   const daysToShow = parseInt(params.get('daysToShow') || '5', 10);
+  const quarter = params.get('quarter') || 'Q1';
   
   // Set API key if provided
   if (apiKey) {
@@ -36,6 +37,7 @@ const WidgetPage = () => {
         title={title}
         logo={logo}
         daysToShow={daysToShow}
+        quarter={quarter}
       />
     </div>
   );
