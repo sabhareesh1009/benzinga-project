@@ -3,9 +3,14 @@ import PropTypes from "prop-types";
 import EarningsDay from "./EarningsDay";
 import { fetchEarningsData, fetchCompanyLogos } from "../../services/earnings";
 import { groupEarningsByDay, formatDate } from "../../configs/earningsConfig";
-import { DAYS_TO_SHOW } from "../../constants";
+import { DAYS_TO_SHOW, DEFAULT_DATE_FROM, DEFAULT_DATE_TO, QUATER_DATES } from "../../constants";
 
-const EarningsWidget = ({ title, logo, daysToShow = DAYS_TO_SHOW }) => {
+const EarningsWidget = ({
+  title,
+  logo,
+  daysToShow = DAYS_TO_SHOW,
+  quarter = "Q1",
+}) => {
   const [earningsData, setEarningsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -18,7 +23,10 @@ const EarningsWidget = ({ title, logo, daysToShow = DAYS_TO_SHOW }) => {
         setLoading(true);
 
         // Fetch earnings data with date range
-        const earnings = await fetchEarningsData();
+        const earnings = await fetchEarningsData({
+          dateFrom: QUATER_DATES[quarter].startDate || DEFAULT_DATE_FROM,
+          dateTo: QUATER_DATES[quarter].endDate || DEFAULT_DATE_TO,
+        });
         setEarningsData(earnings);
 
         // Extract tickers for logo fetching
@@ -35,7 +43,7 @@ const EarningsWidget = ({ title, logo, daysToShow = DAYS_TO_SHOW }) => {
     };
 
     loadEarningsData();
-  }, []);
+  }, [quarter]);
 
   // Group the earnings by day once we have the data
   const groupedEarnings =
@@ -43,7 +51,7 @@ const EarningsWidget = ({ title, logo, daysToShow = DAYS_TO_SHOW }) => {
 
   if (loading) {
     return (
-      <div className="max-w-7xl mx-auto bg-[#dcb482] rounded-lg h-full shadow-md p-4">
+      <div className="max-w-7xl mx-auto bg-[#dcb482] rounded-lg shadow-md p-4">
         <div className="flex flex-col justify-center items-center h-48">
           <p className="text-gray-800">Loading earnings data...</p>
         </div>
@@ -99,6 +107,7 @@ EarningsWidget.propTypes = {
   title: PropTypes.string,
   logo: PropTypes.string,
   daysToShow: PropTypes.number,
+  quarter: PropTypes.string,
 };
 
 export default EarningsWidget;

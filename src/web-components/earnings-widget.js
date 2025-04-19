@@ -12,7 +12,8 @@ class EarningsWidgetElement extends LitElement {
     apiKey: { type: String },
     title: { type: String },
     logo: { type: String },
-    daysToShow: { type: Number }
+    daysToShow: { type: Number },
+    quarter: { type: String }
   };
 
   constructor() {
@@ -22,6 +23,7 @@ class EarningsWidgetElement extends LitElement {
     this.title = WIDGET_TITLE;
     this.logo = WIDGET_LOGO;
     this.daysToShow = 5;
+    this.quarter = 'Q1';
   }
 
   // Override to disable shadow DOM - this will allow global styles to apply
@@ -47,6 +49,7 @@ class EarningsWidgetElement extends LitElement {
           title={this.title}
           logo={this.logo}
           daysToShow={parseInt(this.daysToShow, 10)}
+          quarter={this.quarter}
         />
       </React.StrictMode>
     );
