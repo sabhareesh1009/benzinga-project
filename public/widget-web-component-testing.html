@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benzinga Earnings Widget Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .widget-container {
+      width: 100%;
+      margin: 20px 0;
+    }
+  </style>
+  <!-- Load the web component from jsDelivr -->
+  <script src="https://cdn.jsdelivr.net/gh/sabhareesh1009/benzinga-project/dist/webcomponent/earnings-widget.js"></script>
+</head>
+<body>
+  <h1>Benzinga Earnings Widget Test</h1>
+  <div class="widget-container">
+    <benzinga-earnings-widget 
+      api-key="f090a778d74f4450a11ad417ad72740c"
+      title="Earnings Calendar" 
+      logo="BZ" 
+      days-to-show="5">
+    </benzinga-earnings-widget>
+  </div>
+</body>
+</html>
